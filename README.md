@@ -22,7 +22,7 @@
 > $npm install vue-cli -g
 #### 5.安装依赖
 > $ npm install
-> 或者 $ npm installc
+> 或者 $ cnpm install(国内淘宝镜像)
 #### 6.run 项目
 > $ npm run dev
 #### 7.发布代码
