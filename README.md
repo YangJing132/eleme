@@ -1,5 +1,5 @@
 # Vue2.0仿饿了么webapp单页应用
-
+  - 2017-06-19完成header部分,goods部分
 > 项目技术栈
 - vue
 - vue-cli
