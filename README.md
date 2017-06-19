@@ -21,8 +21,8 @@
 #### 4.安装vue脚手架工具vue-cli:
 > $npm install vue-cli -g
 #### 5.安装依赖
-> $ npm install --save-dev
-> 或者 $ npm installc --save-dev
+> $ npm install
+> 或者 $ npm installc
 #### 6.run 项目
 > $ npm run dev
 #### 7.发布代码
