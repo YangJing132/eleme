@@ -1,31 +1,18 @@
-# eleme
+# Vue2.0仿饿了么webapp单页应用
 
-> A Vue.js project
+> 项目技术栈
+- vue
+- vue-cli
+- vue-resource
+- vue-router
+- es6
+- stylus
+- node
+- webpack
+- 暂没有使用vuex状态管理,计划下一个项目用上
 
-## Build Setup
-
-``` bash
-# install dependencies
-# 下拉依赖
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+##　起步
+#### 1.安装node：
+>`http://nodejs.cn/download/`
+#### 2.git：
+>`https://git-scm.com/downloads`
