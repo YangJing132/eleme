@@ -6,6 +6,7 @@
 
 ``` bash
 # install dependencies
+# 下拉依赖
 npm install
 
 # serve with hot reload at localhost:8080
