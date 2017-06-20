@@ -4,14 +4,14 @@
       <!--减号-->
       <div class="cart-decrease"
            v-show="food.count>0"
-           @click="decreaseCart($event)">
+           @click.stop.prevent="decreaseCart">
         <span class="inner inner1 icon-remove_circle_outline"></span>
       </div>
     </transition>
     <!--数量-->
     <div class="cart-count" v-show="food.count>0">{{ food.count }}</div>
     <!--加号-->
-    <div class="cart-add icon-add_circle" @click="addCart($event)"></div>
+    <div class="cart-add icon-add_circle" @click.stop.prevent="addCart"></div>
   </div>
 </template>
 
@@ -24,9 +24,10 @@
       }
     },
     methods: {
-      addCart($event) {
+      //修改数据goods=>foods=>food的count，映射到原始数据中
+      addCart(event) {
         // 阻止pc端默认事件触发
-        if (!$event._constructed) {
+        if (!event._constructed) {
           return;
         }
         if (!this.food.count) {
@@ -36,12 +37,12 @@
         } else {
           this.food.count++;
         }
+        this.$bus.emit('add', event.target);
         // 把点击+号的事件源传入到父组件
         this.$emit('event', event.target);
       },
-      decreaseCart($event) {
-        // 阻止pc端默认事件触发
-        if (!$event._constructed) {
+      decreaseCart(event) {
+        if (!event._constructed) {
           return;
         }
         if (this.food.count) {

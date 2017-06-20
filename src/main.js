@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import VueBus from 'vue-bus'; // 事件中心插件
 import App from './App'
 
 //1.定义(路由)组件
@@ -16,6 +17,7 @@ import './common/stylus/index.styl'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(VueBus);
 //2. 定义路由
 const routes = [
   {path: '/goods', component: goods},
