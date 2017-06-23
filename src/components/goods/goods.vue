@@ -26,7 +26,8 @@
             <ul>
               <li
                 v-for="food in item.foods"
-                class="food-item border-1px">
+                class="food-item border-1px"
+                @click="selectFood(food,$event)">
                 <div class="icon">
                   <img :src="food.icon" width="57px" height="57px">
                 </div>
@@ -37,10 +38,8 @@
                     <span class="count">月售{{ food.sellCount }}份</span>
                     <span>好评率{{ food.rating }}%</span>
                   </div>
-                  <div class="price">
-                    <span class="now">￥{{food.price}}</span>
-                    <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
-                  </div>
+                  <!--price组件price-->
+                  <price :food="food"></price>
                   <!--添加子组件-->
                   <div class="cartcontrol-wrapper">
                     <cartcontrol :food="food" @event="getEvent"></cartcontrol>
@@ -57,6 +56,8 @@
                 :min-price="seller.minPrice"
                 :delivery-price="seller.deliveryPrice"></shopcart>
     </div>
+    <!--food组件-->
+    <food :food="selectedFood" ref="food"></food>
   </div>
 </template>
 
@@ -65,6 +66,8 @@
   import BScroll from 'better-scroll';
   import shopcart from '../shopcart/shopcart.vue';
   import cartcontrol from '../cartcontrol/cartcontrol.vue';
+  import food from '../food/food.vue';
+  import price from '../price/price.vue';
   const ERR_OK = 0;
   export default {
     props: {
@@ -127,7 +130,8 @@
       return {
         goods: [],
         listHeight: [], // 存放每个商品列表的高度偏差
-        scrollY: 0  //用户滚动的位置
+        scrollY: 0, //用户滚动的位置
+        selectedFood: {} // 点击查看详情的商品
       }
     },
     computed: {
@@ -189,6 +193,14 @@
         let el = foodList[index]; // 当前点击的li
         this.foodsScroll.scrollToElement(el, 300);
       },
+      // 点击查看商品详情
+      selectFood(food, event) {
+        if (!event._constructed) {
+          return;
+        }
+        this.selectedFood = food; // 将点击的food赋值并传入food组件
+        this.$refs.food.show(); // 调用food组件的show方法
+      },
       // 获取滚动量
       _initScroll() {
         this.menuScroll = new BScroll(this.$refs.menuWrapper, {
@@ -227,7 +239,9 @@
     },
     components: {
       shopcart,
-      cartcontrol
+      cartcontrol,
+      food,
+      price
     }
   };
 </script>
@@ -323,18 +337,6 @@
           .extra
             .count
               margin-right: 12px
-          .price
-            font-weight: 700
-            line-height: 24px
-            vertical-align: middle
-            .now
-              margin-right: 8px
-              font-size: 14px
-              color: rgb(240, 20, 20)
-            .old
-              text-decoration: line-through
-              font-size: 10px
-              color: rgb(147, 153, 159)
           .cartcontrol-wrapper
             position: absolute
             right: 0

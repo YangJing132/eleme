@@ -170,7 +170,7 @@
           food.count = 0;
         });
       },
-      //隐藏list
+      // 隐藏list
       hideList() {
         this.fold = true;
       },
